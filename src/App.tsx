@@ -455,11 +455,8 @@ export default function App() {
             </div>
 
             <div className="flex items-center gap-4 mb-6">
-              <div className="w-14 h-14 rounded-full bg-amber-light/20 flex items-center justify-center border-2 border-amber-base">
-                <span className="font-serif-display font-black text-xl text-brown-base">PS</span>
-              </div>
               <div>
-                <h4 className="font-serif-display text-lg font-bold text-brown-base">Przemysław S.</h4>
+                <h4 className="font-serif-display text-lg font-bold text-brown-base">Zadowolony Klient</h4>
                 <div className="flex gap-1 text-amber-base my-0.5">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-current text-amber-base" />
