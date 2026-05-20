@@ -1,0 +1,6 @@
+{
+  "name": "Gidlanka - Obiady jak u Babci",
+  "description": "Domowe obiady jak u Babci w sercu Gidel! Codziennie świeże posiłki na miejscu i na wynos, catering dla firm oraz organizacja imprez rodzinnych.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

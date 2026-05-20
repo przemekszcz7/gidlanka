@@ -1,0 +1,333 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #FAF6EE;
+  --bg-section: #F2EAD8;
+  --bg-warm: #EDE0C8;
+  --bg-dark: #3A2010;
+  --bg-darker: #251408;
+  --bg-mid: #4A2A14;
+  --bg-card-dark: #523018;
+  --brown: #5C3A1E;
+  --brown-mid: #8B5E35;
+  --brown-light: #C4956A;
+  --brown-pale: #E8D5B8;
+  --amber: #C4822A;
+  --amber-light: #E8B86A;
+  --amber-pale: #F5DEB8;
+  --amber-subtle: rgba(196, 130, 42, 0.12);
+  --cream: #F5EDD8;
+  --cream-deep: #EDE0C8;
+  --red-earth: #7A2E1A;
+  --green-herb: #4A6A3A;
+  --text: #251408;
+  --text-muted: #7A5A3A;
+  --text-light: #F5EDD8;
+  --text-pale: rgba(245, 237, 216, 0.75);
+  --border: rgba(92, 58, 30, 0.12);
+  --border-amber: rgba(196, 130, 42, 0.25);
+  --border-dark: rgba(245, 237, 216, 0.12);
+}
+
+@theme {
+  --font-serif-display: "Playfair Display", Georgia, serif;
+  --font-serif-story: "Lora", Georgia, serif;
+  --font-mono-recipe: "Courier Prime", monospace;
+  --font-handwritten: "Caveat", cursive;
+
+  --color-bg: var(--bg);
+  --color-bg-section: var(--bg-section);
+  --color-bg-warm: var(--bg-warm);
+  --color-bg-dark: var(--bg-dark);
+  --color-bg-darker: var(--bg-darker);
+  --color-bg-mid: var(--bg-mid);
+  --color-bg-card-dark: var(--bg-card-dark);
+  --color-brown-base: var(--brown);
+  --color-brown-mid: var(--brown-mid);
+  --color-brown-light: var(--brown-light);
+  --color-brown-pale: var(--brown-pale);
+  --color-amber-base: var(--amber);
+  --color-amber-light: var(--amber-light);
+  --color-amber-pale: var(--amber-pale);
+  --color-cream-base: var(--cream);
+  --color-cream-deep: var(--cream-deep);
+  --color-red-earth: var(--red-earth);
+  --color-green-herb: var(--green-herb);
+  --color-text-base: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-text-light: var(--text-light);
+  --color-border-base: var(--border);
+  --color-border-amber: var(--border-amber);
+  --color-border-dark: var(--border-dark);
+}
+
+/* Custom Textures and Finishes */
+
+/* Dark Wood Grain: Vertical stripes like historic dark oak floorboards */
+.wood-grain-dark {
+  background-color: var(--bg-darker);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(20, 10, 3, 0.35) 0px,
+    rgba(20, 10, 3, 0.35) 4px,
+    rgba(37, 20, 8, 0.12) 4px,
+    rgba(37, 20, 8, 0.12) 120px,
+    rgba(10, 5, 2, 0.45) 120px,
+    rgba(10, 5, 2, 0.45) 124px,
+    rgba(58, 32, 16, 0.1) 124px,
+    rgba(58, 32, 16, 0.1) 240px
+  );
+}
+
+/* Light Wood Table: Horizontal subtle wood grain */
+.wood-grain-light {
+  background-color: var(--bg);
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(92, 58, 30, 0.015) 0px,
+    rgba(92, 58, 30, 0.015) 2px,
+    transparent 2px,
+    transparent 4px,
+    rgba(92, 58, 30, 0.02) 4px,
+    rgba(92, 58, 30, 0.02) 6px,
+    transparent 6px,
+    transparent 12px
+  );
+}
+
+/* Aged Linen Tablecloth: Crosshatch pattern */
+.linen-texture {
+  background-color: var(--bg-section);
+  background-image: 
+    linear-gradient(90deg, rgba(92, 58, 30, 0.02) 50%, transparent 50%),
+    linear-gradient(rgba(92, 58, 30, 0.02) 50%, transparent 50%);
+  background-size: 5px 5px;
+}
+
+/* Combined linen with underlying subtle wood grain for warmth */
+.linen-wood-light {
+  background-color: var(--bg-section);
+  background-image: 
+    repeating-linear-gradient(0deg, rgba(92, 58, 30, 0.012) 0px, rgba(92, 58, 30, 0.012) 2px, transparent 2px, transparent 6px),
+    linear-gradient(90deg, rgba(92, 58, 30, 0.02) 50%, transparent 50%),
+    linear-gradient(rgba(92, 58, 30, 0.02) 50%, transparent 50%);
+  background-size: 100% 12px, 4px 4px, 4px 4px;
+}
+
+/* Candlelight effect for deep dark layouts */
+.candlelight-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.candlelight-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 600px;
+  background: 
+    radial-gradient(circle at 15% 0%, rgba(196, 130, 42, 0.16) 0%, transparent 65%),
+    radial-gradient(circle at 85% 0%, rgba(196, 130, 42, 0.14) 0%, transparent 55%);
+  pointer-events: none;
+  animation: candle-pulse 4s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+/* Embroidered border patterns for dividers and cards */
+.embroidery-divider::before {
+  content: "· ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ ·";
+  display: block;
+  text-align: center;
+  color: var(--amber-light);
+  letter-spacing: 0.25em;
+  font-size: 1rem;
+  padding: 1rem 0;
+  opacity: 0.95;
+  font-family: system-ui, sans-serif;
+}
+
+.embroidery-divider-dark::before {
+  content: "· ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ · ✦ ·";
+  display: block;
+  text-align: center;
+  color: var(--amber);
+  letter-spacing: 0.25em;
+  font-size: 1rem;
+  padding: 1rem 0;
+  opacity: 0.65;
+  font-family: system-ui, sans-serif;
+}
+
+/* Recipe Card Aesthetic */
+.recipe-card-container {
+  background-color: var(--cream);
+  border: 1px dashed var(--amber);
+  font-family: "Lora", serif;
+  transform: rotate(-0.5deg);
+  box-shadow: 
+    0 4px 6px -1px rgba(92, 58, 30, 0.05), 
+    0 10px 15px -3px rgba(92, 58, 30, 0.1),
+    4px 4px 0px rgba(92, 58, 30, 0.04);
+  border-radius: 4px;
+}
+
+/* CSS Keyframes for custom animations */
+@keyframes candle-pulse {
+  0% {
+    opacity: 0.82;
+  }
+  50% {
+    opacity: 0.98;
+  }
+  100% {
+    opacity: 0.88;
+  }
+}
+
+@keyframes steam-rise {
+  0% {
+    transform: translateY(0) scaleX(0.9) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-20px) scaleX(1.1) rotate(5deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-44px) scaleX(0.8) rotate(-5deg);
+    opacity: 0;
+  }
+}
+
+@keyframes spoon-stir {
+  0% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes apple-bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes herb-sway {
+  0%, 100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+}
+
+@keyframes heart-twinkle {
+  0%, 100% {
+    opacity: 0.15;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.95;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes wobble-once {
+  0% { transform: scale(1); }
+  15% { transform: scale(1.05) rotate(-3deg); }
+  30% { transform: scale(1.02) rotate(2deg); }
+  45% { transform: scale(1.04) rotate(-2deg); }
+  60% { transform: scale(1.01) rotate(1deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* CSS Classes for Animation Hooks */
+.animate-steam-1 {
+  animation: steam-rise 6s ease-in-out infinite;
+}
+
+.animate-steam-2 {
+  animation: steam-rise 5s ease-in-out infinite;
+  animation-delay: 1.8s;
+}
+
+.animate-steam-3 {
+  animation: steam-rise 7s ease-in-out infinite;
+  animation-delay: 3.5s;
+}
+
+.animate-stir {
+  animation: spoon-stir 4s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+.animate-bob {
+  animation: apple-bob 3s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: herb-sway 6s ease-in-out infinite;
+}
+
+.animate-twinkle {
+  animation: heart-twinkle 3s ease-in-out infinite;
+}
+
+.animate-wobble-load {
+  animation: wobble-once 1.5s ease-out 1;
+}
+
+/* Light theme cards */
+.g-card-light {
+  background-color: var(--bg-section);
+  border-radius: 12px;
+  border-top: 3px solid var(--amber);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 24px rgba(92, 58, 30, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.g-card-light:hover {
+  transform: translateY(-4px);
+  border-left-width: 4px;
+  border-left-color: var(--brown);
+  box-shadow: 0 12px 32px rgba(92, 58, 30, 0.15);
+}
+
+/* Dark theme cards */
+.g-card-dark {
+  background-color: var(--bg-card-dark);
+  border: 1px solid var(--border-dark);
+  border-top: 2px solid var(--amber);
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.g-card-dark:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px var(--amber-subtle);
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Lora', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+}
